@@ -1,4 +1,4 @@
-	.section .text
+	.section .text.entry
 	.global _start
 _start:
 	la sp, boot_stack_top
