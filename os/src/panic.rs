@@ -1,5 +1,5 @@
-use core::panic::PanicInfo;
 use crate::sbi::shutdown;
+use core::panic::PanicInfo;
 
 #[panic_handler]
 fn panic_handler(info: &PanicInfo) -> ! {
@@ -11,4 +11,3 @@ fn panic_handler(info: &PanicInfo) -> ! {
 extern "C" fn abort() -> ! {
     panic!("abort()")
 }
-
