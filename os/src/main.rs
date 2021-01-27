@@ -42,5 +42,15 @@ pub extern "C" fn rust_main() -> ! {
 
     println!("{}", *memory::config::KERNEL_END_ADDRESS);
 
-    loop {}
+    for _ in 0..2 {
+        let frame_0 = memory::FRAME_ALLOCATOR.lock()
+                                             .alloc()
+                                             .unwrap_or_else(|err| panic!("{}", err));
+        let frame_1 = memory::FRAME_ALLOCATOR.lock()
+                                             .alloc()
+                                             .unwrap_or_else(|err| panic!("{}", err));
+        println!("{} and {}", frame_0.address(), frame_1.address());
+    }
+
+    panic!()
 }

@@ -68,6 +68,7 @@ dependencies = [
  "buddy_system_allocator",
  "lazy_static",
  "riscv",
+ "spin 0.5.2",
 ]
 
 [[package]]
