@@ -4,13 +4,13 @@ use core::cmp::min;
 
 const BITMAP_SIZE: usize = 4096;
 
-struct BitmapVectorAllocator {
+pub struct BitmapVectorAllocator {
     capacity: usize,
-    bitmap: [u8; usize],
+    bitmap: [u8; BITMAP_SIZE / 8],
 }
 
 impl VectorAllocator for BitmapVectorAllocator {
-    fn new(capacity: usize) {
+    fn new(capacity: usize) ->Self {
         Self {
             capacity: min(BITMAP_SIZE, capacity),
             bitmap: [0u8; BITMAP_SIZE / 8],
@@ -27,7 +27,7 @@ impl VectorAllocator for BitmapVectorAllocator {
         None
     }
 
-    fn dealloc(&mut self, start: usize, size: usize, align: usize) {
+    fn dealloc(&mut self, start: usize, size: usize, _align: usize) {
         assert!(self.bitmap.get_bit(start));
         (start..start + size).for_each(|i| self.bitmap.set_bit(i, false));
     }

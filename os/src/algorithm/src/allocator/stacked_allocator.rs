@@ -1,7 +1,7 @@
 use super::Allocator;
-use alloc::vec::{self, Vec};
+use alloc::{vec, vec::Vec};
 
-struct StackedAllocator {
+pub struct StackedAllocator {
     list: Vec<(usize, usize)>,
 }
 
