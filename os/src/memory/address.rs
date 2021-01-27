@@ -4,10 +4,20 @@
 
 use super::config::PAGE_SIZE;
 
+/// 虚拟地址
+#[repr(C)]
+#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
+pub struct VirtualAddress(pub usize);
+
 /// 物理地址
 #[repr(C)]
 #[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
 pub struct PhysicalAddress(pub usize);
+
+/// 虚拟页号
+#[repr(C)]
+#[derive(Copy, Clone, Debug, Default, Eq, PartialEq, Ord, PartialOrd, Hash)]
+pub struct VirtualPageNumber(pub usize);
 
 /// 物理页号
 #[repr(C)]
